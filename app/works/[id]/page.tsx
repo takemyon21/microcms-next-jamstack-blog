@@ -14,37 +14,37 @@ type Props = {
 };
 
 // microCMSから特定の記事を取得
-async function getBlogPost(id: string): Promise<Props> {
+async function getWorksPost(id: string): Promise<Props> {
   const data = await client.get({
-    endpoint: `blog/${id}`,
+    endpoint: `works/${id}`,
   });
   return data;
 }
 
 // 記事詳細ページの生成
-export default async function BlogPostPage({ params }: { params: Promise<{ id: string }> }) {
+export default async function BlogWorksPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params; // IDを取得
-  const post = await getBlogPost(id);
+  const work = await getWorksPost(id);
 
   // dayjsを使ってpublishedAtをYY.MM.DD形式に変換
-  const formattedDate = dayjs(post.publishedAt).format("YY.MM.DD");
-  const markup = { __html: post.content };
+  const formattedDate = dayjs(work.publishedAt).format("YY.MM.DD");
+  const markup = { __html: work.content };
 
   return (
     <main>
-      <h1 className="text-[64px]">{post.title}</h1> {/* タイトルを表示 */}
-      <div className="my-[32px]">
-        <Image src={post.eyecatch.url} alt={post.title} width={800} height={600} sizes="(max-width: 768px) 100vw, 800px" priority />
-      </div>
+      <h1 className="text-[64px]">{work.title}</h1> {/* タイトルを表示 */}
       <div>{formattedDate}</div> {/* 日付を表示 */}
-      {/* <div>カテゴリー：{post.category && post.category.name}</div> カテゴリーを表示 */}
+      <div className="my-[32px]">
+        <Image src={work.eyecatch.url} alt={work.title} width={800} height={600} sizes="(max-width: 768px) 100vw, 800px" priority />
+      </div>
+      {/* <div>カテゴリー：{work.category && work.category.name}</div> カテゴリーを表示 */}
       <div>
         カテゴリー：
-        {post.category &&
-          post.category.map((cat, index) => (
+        {work.category &&
+          work.category.map((cat, index) => (
             <span key={cat.id}>
               {cat.name}
-              {index < post.category.length - 1 ? ", " : ""}
+              {index < work.category.length - 1 ? ", " : ""}
             </span>
           ))}
       </div>{" "}
@@ -56,7 +56,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ id: s
 
 // 静的パスを生成
 export async function generateStaticParams() {
-  const contentIds = await client.getAllContentIds({ endpoint: "blog" });
+  const contentIds = await client.getAllContentIds({ endpoint: "works" });
 
   return contentIds.map((contentId) => ({
     id: contentId, // 各記事のIDをパラメータとして返す
