@@ -9,7 +9,8 @@ type Props = {
   title: string;
   content: string;
   publishedAt: string;
-  category: { name: string };
+  // category: { name: string };
+  category: { id: string; name: string }[];
   eyecatch: { url: string };
 };
 
