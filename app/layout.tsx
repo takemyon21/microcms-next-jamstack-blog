@@ -36,7 +36,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body className={`${notoSansJP.variable} ${geistSans.variable} ${geistMono.variable} antialiased font-[var(--font-noto)]`}>
+      <body className={`${notoSansJP.variable} ${geistSans.variable} ${geistMono.variable} antialiased font-[var(--font-noto)] text-[#888]`}>
         <Header />
         <main className="pt-[72px]">{children}</main>
         <Footer />
