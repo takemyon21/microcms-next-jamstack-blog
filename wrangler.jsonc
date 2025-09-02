@@ -1,6 +1,6 @@
 {
   "name": "microcms-next-jamstack-blog",
   "main": "app/page.tsx", // エントリーファイル (JSなら "src/index.js")
-  "compatibility_date": "2025-09-03",
+  "compatibility_date": "2025-08-31",
   "account_id": "88ca3773bdcbd3fee8e5b78cb971aaeb" // Cloudflare ダッシュボードで確認
 }
