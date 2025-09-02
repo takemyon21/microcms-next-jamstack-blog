@@ -1,12 +1,12 @@
-@import "tailwindcss";
-@import "swiper/css";
-@import "swiper/css/navigation";
-@import "swiper/css/pagination";
+@import 'tailwindcss';
+@import 'swiper/css';
+@import 'swiper/css/navigation';
+@import 'swiper/css/pagination';
 
 :root {
   --background: #ffffff;
   --foreground: #333;
-  --font-noto: "Noto Sans JP", sans-serif;
+  --font-noto: 'Noto Sans JP', sans-serif;
 }
 
 @theme inline {
@@ -43,4 +43,8 @@ body {
   .inner {
     padding: 0 60px;
   }
+}
+
+canvas {
+  background-color: white; /* 任意の色 */
 }

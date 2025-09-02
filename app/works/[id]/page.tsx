@@ -32,8 +32,8 @@ export default async function BlogWorksPage({ params }: { params: Promise<{ id: 
   const markup = { __html: work.content };
 
   return (
-    <main>
-      <h1 className="text-[64px]">{work.title}</h1> {/* タイトルを表示 */}
+    <>
+      <h2 className="text-[64px]">{work.title}</h2> {/* タイトルを表示 */}
       <div>{formattedDate}</div> {/* 日付を表示 */}
       <div className="my-[32px]">
         <Image src={work.eyecatch.url} alt={work.title} width={800} height={600} sizes="(max-width: 768px) 100vw, 800px" priority />
@@ -51,7 +51,7 @@ export default async function BlogWorksPage({ params }: { params: Promise<{ id: 
       </div>{" "}
       {/* カテゴリーを表示 */}
       <div dangerouslySetInnerHTML={markup} /> {/* 記事本文を表示 */}
-    </main>
+    </>
   );
 }
 
