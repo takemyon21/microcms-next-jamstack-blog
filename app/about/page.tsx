@@ -26,14 +26,14 @@ export default async function AboutPostPage() {
   const markup = { __html: post.content };
 
   return (
-    <main>
-      <h1 className="text-[64px]">{post.title}</h1> {/* タイトルを表示 */}
+    <>
+      <h2 className="text-[64px]">{post.title}</h2> {/* タイトルを表示 */}
       <div className="my-[32px]">
         <Image src={post.image.url} alt={post.title} width={800} height={600} sizes="(max-width: 768px) 100vw, 800px" priority />
       </div>
       {/* カテゴリーを表示 */}
       <div dangerouslySetInnerHTML={markup} /> {/* 記事本文を表示 */}
-    </main>
+    </>
   );
 }
 
